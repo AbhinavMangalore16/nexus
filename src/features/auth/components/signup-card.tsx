@@ -5,12 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { FaGithub } from "react-icons/fa";
 import { SignInFlow } from "../types";
+import { useState } from "react";
 
 interface SignUpCardProps {
     setState: (state: SignInFlow) => void;
 }
 
 export const SignUpCard = ({ setState }: SignUpCardProps) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState(""); 
+    const [confirmPassword, setConfirmPassword] = useState("");
     return (
         <Card className="h-full w-full p-8">
             <CardHeader className="px-0 pt-0">
@@ -25,8 +29,8 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                 <form className="space-y-2.5">
                     <Input
                         disabled={false}
-                        value=""
-                        onChange={() => {}}
+                        value={email}
+                        onChange={(e) => {setEmail(e.target.value)}}
                         placeholder="Email"
                         type="email"
                         required
@@ -47,8 +51,8 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                     </p>
                     <Input
                         disabled={false}
-                        value=""
-                        onChange={() => {}}
+                        value={password}
+                        onChange={(e) => {setPassword(e.target.value)}}
                         placeholder="Password"
                         type="password"
                         required
@@ -66,8 +70,8 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                     />
                     <Input
                         disabled={false}
-                        value=""
-                        onChange={() => {}}
+                        value={confirmPassword}
+                        onChange={(e) => {setConfirmPassword(e.target.value)}}
                         placeholder="Confirm password"
                         type="password"
                         required
